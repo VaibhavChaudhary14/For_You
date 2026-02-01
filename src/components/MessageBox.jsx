@@ -10,7 +10,7 @@ const MessageBox = ({ onSend }) => {
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async () => {
-        if (message.trim().length < 5) return;
+        if (message.trim().length < 5 || fromName.trim().length === 0) return;
 
         setIsSending(true);
         setSendStatus(null); // Clear previous status
@@ -73,8 +73,8 @@ const MessageBox = ({ onSend }) => {
                         type="text"
                         value={fromName}
                         onChange={(e) => setFromName(e.target.value)}
-                        placeholder="Your Name (Who is this from?)"
-                        className="w-full bg-royal-night/5 border-b-2 border-royal-night/20 p-2 font-cormorant text-xl text-royal-night transition-all duration-300 placeholder-royal-night/40 italic focus:outline-none focus:border-antique-gold"
+                        placeholder="Your Name (Mandatory)"
+                        className={`w-full bg-royal-night/5 border-b-2 p-2 font-cormorant text-xl text-royal-night transition-all duration-300 placeholder-royal-night/40 italic focus:outline-none ${fromName.trim() === '' ? 'border-red-300 focus:border-red-500' : 'border-royal-night/20 focus:border-antique-gold'}`}
                     />
                 </div>
 
@@ -105,8 +105,8 @@ const MessageBox = ({ onSend }) => {
                 <div className="flex flex-col items-center gap-4">
                     <button
                         onClick={handleSubmit}
-                        disabled={message.trim().length < 5 || isSending}
-                        className={`w-full md:w-auto px-12 py-4 border-2 border-royal-night bg-royal-night text-antique-gold hover:bg-transparent hover:text-royal-night font-playfair uppercase tracking-[0.2em] font-bold transition-all duration-300 rounded-sm ${(message.trim().length < 5 || isSending) ? 'opacity-50 cursor-not-allowed' : 'opacity-100 shadow-md hover:shadow-lg'
+                        disabled={message.trim().length < 5 || fromName.trim().length === 0 || isSending}
+                        className={`w-full md:w-auto px-12 py-4 border-2 border-royal-night bg-royal-night text-antique-gold hover:bg-transparent hover:text-royal-night font-playfair uppercase tracking-[0.2em] font-bold transition-all duration-300 rounded-sm ${(message.trim().length < 5 || fromName.trim().length === 0 || isSending) ? 'opacity-50 cursor-not-allowed' : 'opacity-100 shadow-md hover:shadow-lg'
                             }`}
                     >
                         {isSending ? 'Sealing...' : 'Seal & Deliver (Email)'}
