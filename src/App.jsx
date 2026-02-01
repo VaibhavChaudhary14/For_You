@@ -35,10 +35,10 @@ function App() {
       <AudioController />
       <CursorTrail />
       {/* Texture Overlay */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-50 bg-burgundy mix-blend-multiply"></div>
+      <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-10 bg-burgundy mix-blend-multiply"></div>
 
       {/* View Rendering */}
-      <main className="relative w-full h-full">
+      <main className="relative w-full h-full z-20">
         {currentView === 'landing' && (
           <LandingPage onStart={handleStartJourney} />
         )}
