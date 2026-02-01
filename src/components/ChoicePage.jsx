@@ -51,17 +51,17 @@ const ChoicePage = ({ onChoice }) => {
                     "Will you walk with me into the eternal night, hand in hand, forever?"
                 </p>
 
-                <div className="flex flex-col md:flex-row gap-8 justify-center items-center w-full px-4">
+                <div className="flex flex-col md:flex-row gap-8 justify-center items-center w-full px-4 relative z-[100]">
                     <button
                         onClick={() => handleChoice('yes')}
-                        className="elegant-button min-w-[200px] px-8 py-4 border-2 border-antique-gold text-royal-night bg-antique-gold hover:bg-transparent hover:text-antique-gold font-playfair uppercase tracking-[0.15em] text-lg font-bold shadow-glow-gold rounded-sm transition-all"
+                        className="elegant-button min-w-[200px] px-8 py-4 border-2 border-antique-gold text-royal-night bg-antique-gold hover:bg-transparent hover:text-antique-gold font-playfair uppercase tracking-[0.15em] text-lg font-bold shadow-glow-gold rounded-sm transition-all pointer-events-auto cursor-pointer"
                     >
                         Haa, Humesha
                     </button>
 
                     <button
                         onClick={() => handleChoice('no')}
-                        className="elegant-button min-w-[200px] px-8 py-4 border-2 border-mithila-red text-mithila-red hover:bg-mithila-red hover:text-white font-playfair uppercase tracking-[0.15em] text-lg font-bold shadow-sm rounded-sm transition-all"
+                        className="elegant-button min-w-[200px] px-8 py-4 border-2 border-mithila-red text-mithila-red hover:bg-mithila-red hover:text-white font-playfair uppercase tracking-[0.15em] text-lg font-bold shadow-sm rounded-sm transition-all pointer-events-auto cursor-pointer"
                     >
                         Abhi Nahi...
                     </button>

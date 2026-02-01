@@ -212,12 +212,12 @@ const BookExperience = ({ onComplete }) => {
                             </div>
 
                             {/* Visible Navigation Buttons */}
-                            <div className="flex justify-between items-center mt-auto px-2 md:px-8 shrink-0 pb-4">
+                            <div className="flex justify-between items-center mt-auto px-2 md:px-8 shrink-0 pb-4 relative z-[100]">
                                 <div className="w-1/3 text-left">
                                     {currentChapter > 0 && (
                                         <button
                                             onClick={handlePrev}
-                                            className="flex items-center gap-2 text-[#2a0a10]/70 hover:text-mithila-red font-playfair font-bold uppercase tracking-widest transition-colors group"
+                                            className="flex items-center gap-2 text-[#2a0a10]/70 hover:text-mithila-red font-playfair font-bold uppercase tracking-widest transition-colors group pointer-events-auto cursor-pointer"
                                         >
                                             <span className="text-xl group-hover:-translate-x-1 transition-transform">❮</span> Back
                                         </button>
@@ -231,7 +231,7 @@ const BookExperience = ({ onComplete }) => {
                                 <div className="w-1/3 text-right">
                                     <button
                                         onClick={handleNext}
-                                        className="flex items-center gap-2 text-[#2a0a10] hover:text-mithila-red font-playfair font-bold uppercase tracking-widest transition-colors ml-auto group"
+                                        className="flex items-center gap-2 text-[#2a0a10] hover:text-mithila-red font-playfair font-bold uppercase tracking-widest transition-colors ml-auto group pointer-events-auto cursor-pointer"
                                     >
                                         {currentChapter === CHAPTERS.length - 1 ? 'Continue' : 'Next'}
                                         <span className="text-xl group-hover:translate-x-1 transition-transform inline-block">❯</span>
