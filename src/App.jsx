@@ -4,6 +4,7 @@ import BookExperience from './components/BookExperience';
 import ChoicePage from './components/ChoicePage';
 import MessageBox from './components/MessageBox';
 import AudioController from './components/AudioController';
+import CursorTrail from './components/CursorTrail';
 import { mockApi } from './utils/mockApi';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
   return (
     <div className="min-h-screen bg-ivory overflow-hidden relative selection:bg-gold selection:text-ivory">
       <AudioController />
+      <CursorTrail />
       {/* Texture Overlay */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-50 bg-burgundy mix-blend-multiply"></div>
 
