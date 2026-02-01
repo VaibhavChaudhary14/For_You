@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="min-h-screen bg-ivory overflow-hidden relative selection:bg-gold selection:text-ivory">
       <AudioController />
-      <CursorTrail />
+      {/* <CursorTrail /> */}
       {/* Texture Overlay */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-10 bg-burgundy mix-blend-multiply"></div>
 
