@@ -140,7 +140,7 @@ const BookExperience = ({ onComplete }) => {
         <div className="h-screen w-full flex items-center justify-center bg-royal-night overflow-hidden relative fade-in">
 
             {/* Dark Background Texture */}
-            <div className="absolute inset-0 bg-rajput-pattern opacity-40"></div>
+            <div className="absolute inset-0 bg-rajput-pattern opacity-40 pointer-events-none"></div>
 
             {/* Particles */}
             {!showCover && <FloatingParticles theme={content.theme} />}

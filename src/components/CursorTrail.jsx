@@ -71,7 +71,7 @@ const CursorTrail = () => {
         };
     }, []);
 
-    return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-[9999]" />;
+    return <canvas ref={canvasRef} className="fixed inset-0 z-[9999]" style={{ pointerEvents: 'none' }} />;
 };
 
 export default CursorTrail;
