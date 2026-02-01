@@ -22,7 +22,7 @@ export const emailService = {
                 TEMPLATE_ID,
                 {
                     to_name: 'My Love', // You can customize this
-                    from_name: 'Your Valentine',
+                    from_name: data.from_name || 'Your Valentine',
                     message: data.message,
                     choice: data.choice === 'yes' ? 'Haa, Humesha (Yes)' : 'Abhi Nahi... (Not Yet)',
                     date: new Date().toLocaleDateString(),

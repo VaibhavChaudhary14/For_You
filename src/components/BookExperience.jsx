@@ -1,46 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import FloatingParticles from './FloatingParticles';
 
+// Imports for Medieval Assets
+import roseImg from '../assets/stickers/rose.png';
+import ringImg from '../assets/stickers/ring.png';
+import chocolateImg from '../assets/stickers/chocolate.png';
+import teddyImg from '../assets/stickers/teddy.png';
+import parchmentTexture from '../assets/textures/parchment.png';
+
 const CHAPTERS = [
     {
         day: "Rose Day",
-        emoji: "🌹",
-        theme: "rose", // Particles
+        image: roseImg,
+        theme: "rose",
         message: "Like a crimson rose blooming in the midnight garden of a palace, my love for you is both deep and vibrant. You are the fragrance that fills the empty halls of my heart."
     },
     {
         day: "Propose Day",
-        emoji: "💍",
+        image: ringImg,
         theme: "sparkle",
         message: "Beneath the vast canopy of stars, I kneel not as a servant, but as a devotee. Will you grant me the honor of walking beside you, ruling this life together?"
     },
     {
         day: "Chocolate Day",
-        emoji: "🍫",
+        image: chocolateImg,
         theme: "heart",
         message: "Dark and rich, like the finest cocoa from distant lands. Your presence brings a sweetness that lingers on the soul, a luxury I never wish to be without."
     },
     {
         day: "Teddy Day",
-        emoji: "🧸",
+        image: teddyImg,
         theme: "teddy",
         message: "In a world of stone walls and iron gates, you are my softest refuge. A comfort more precious than silk, a warmth that defies the coldest winter night."
     },
     {
         day: "Promise Day",
-        emoji: "🤝",
+        image: ringImg, // Reusing Ring as symbol of vow
         theme: "promise",
         message: "My word is my bond, etched in stone. I vow to stand as your fortress, shielding you from every storm, honoring you with every breath until the stars go dark."
     },
     {
         day: "Hug Day",
-        emoji: "🤗",
+        image: teddyImg, // Reusing Teddy as symbol of comfort
         theme: "hug",
         message: "When I hold you, time stands still. Two souls merging like rivers in the moonlight. In your embrace, I find the peace that a thousand kingdoms could not buy."
     },
     {
         day: "Kiss Day",
-        emoji: "💋",
+        image: roseImg, // Reusing Rose as symbol of passion
         theme: "kiss",
         message: "A seal upon our hearts. A silent pact that binds us across lifetimes. With this kiss, I surrender my soul to yours, forever and always."
     }
@@ -142,27 +149,38 @@ const BookExperience = ({ onComplete }) => {
                 </div>
             ) : (
                 // Parchment Pages
-                <div className={`w-full max-w-2xl mx-auto p-1 rounded-sm relative transition-all duration-500 z-10 ${isFlipping ? 'page-flip-exit' : 'page-flip-enter'}`}>
+                <div className={`w-full max-w-2xl mx-auto p-2 rounded-sm relative transition-all duration-500 z-10 ${isFlipping ? 'page-flip-exit' : 'page-flip-enter'}`}>
 
                     {/* Parchment Container */}
-                    <div className="bg-parchment p-8 md:p-14 shadow-[0_0_40px_rgba(197,160,89,0.2)] border-2 border-antique-gold/50 relative">
+                    <div className="bg-parchment p-8 md:p-14 shadow-[0_0_50px_rgba(197,160,89,0.3)] border-2 border-antique-gold/60 relative overflow-hidden">
+
+                        {/* 📜 TEXTURE OVERLAY: Adds realistic paper grain */}
+                        <div
+                            className="absolute inset-0 opacity-15 pointer-events-none mix-blend-multiply z-0"
+                            style={{ backgroundImage: `url(${parchmentTexture})`, backgroundSize: 'cover' }}
+                        ></div>
 
                         {/* Corner Patterns */}
-                        <div className="absolute top-2 left-2 text-mithila-red text-xl">✥</div>
-                        <div className="absolute top-2 right-2 text-mithila-red text-xl">✥</div>
-                        <div className="absolute bottom-2 left-2 text-mithila-red text-xl">✥</div>
-                        <div className="absolute bottom-2 right-2 text-mithila-red text-xl">✥</div>
+                        <div className="absolute top-3 left-3 text-mithila-red text-2xl opacity-80 z-10">✥</div>
+                        <div className="absolute top-3 right-3 text-mithila-red text-2xl opacity-80 z-10">✥</div>
+                        <div className="absolute bottom-3 left-3 text-mithila-red text-2xl opacity-80 z-10">✥</div>
+                        <div className="absolute bottom-3 right-3 text-mithila-red text-2xl opacity-80 z-10">✥</div>
 
-                        <div className="text-center">
-                            <div className="text-7xl mb-8 filter drop-shadow-md text-royal-night">
-                                {content.emoji}
-                            </div>
+                        <div className="text-center relative z-10">
 
-                            <h2 className="text-3xl md:text-4xl text-royal-night mb-8 font-playfair font-bold uppercase tracking-wide border-b-2 border-mithila-red/30 inline-block pb-2">
+                            {/* Medieval Sticker Image */}
+                            <img
+                                src={content.image}
+                                alt={content.day}
+                                className="w-32 h-32 md:w-40 md:h-40 object-contain mx-auto mb-8 filter drop-shadow-lg opacity-90 hover:scale-105 transition-transform duration-700 hover:sepia-[.3]"
+                            />
+
+                            <h2 className="text-3xl md:text-4xl text-[#2a0a10] mb-8 font-playfair font-bold uppercase tracking-widest border-b-2 border-mithila-red/40 inline-block pb-3 shadow-sm">
                                 {content.day}
                             </h2>
 
-                            <p className="text-xl md:text-2xl font-cormorant leading-loose text-royal-night/90 max-w-lg mx-auto font-medium italic">
+                            {/* IMPROVED READABILITY: Darker Ink, Medium Weight, increased spacing */}
+                            <p className="text-xl md:text-2xl font-cormorant leading-loose text-[#1a0505] max-w-lg mx-auto font-semibold italic antialiased drop-shadow-sm">
                                 "{content.message}"
                             </p>
 
@@ -172,21 +190,21 @@ const BookExperience = ({ onComplete }) => {
                                     {currentChapter > 0 && (
                                         <button
                                             onClick={handlePrev}
-                                            className="flex items-center gap-2 text-royal-night/60 hover:text-mithila-red font-playfair font-bold uppercase tracking-widest transition-colors group"
+                                            className="flex items-center gap-2 text-[#2a0a10]/70 hover:text-mithila-red font-playfair font-bold uppercase tracking-widest transition-colors group"
                                         >
                                             <span className="text-xl group-hover:-translate-x-1 transition-transform">❮</span> Back
                                         </button>
                                     )}
                                 </div>
 
-                                <div className="text-royal-night/40 text-xs tracking-[0.3em] font-cormorant font-bold uppercase w-1/3 text-center">
+                                <div className="text-[#2a0a10]/50 text-xs tracking-[0.3em] font-cormorant font-bold uppercase w-1/3 text-center">
                                     Page {currentChapter + 1} / {CHAPTERS.length}
                                 </div>
 
                                 <div className="w-1/3 text-right">
                                     <button
                                         onClick={handleNext}
-                                        className="flex items-center gap-2 text-royal-night hover:text-royal-night font-playfair font-bold uppercase tracking-widest transition-colors ml-auto group"
+                                        className="flex items-center gap-2 text-[#2a0a10] hover:text-mithila-red font-playfair font-bold uppercase tracking-widest transition-colors ml-auto group"
                                     >
                                         {currentChapter === CHAPTERS.length - 1 ? 'Continue' : 'Next'}
                                         <span className="text-xl group-hover:translate-x-1 transition-transform inline-block">❯</span>

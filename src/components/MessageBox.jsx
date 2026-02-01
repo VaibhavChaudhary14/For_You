@@ -4,6 +4,7 @@ import { emailService } from '../utils/emailService';
 
 const MessageBox = ({ onSend }) => {
     const [message, setMessage] = useState('');
+    const [fromName, setFromName] = useState('');
     const [isSending, setIsSending] = useState(false);
     const [sendStatus, setSendStatus] = useState(null); // 'success' | 'error'
     const [errorMessage, setErrorMessage] = useState('');
@@ -22,6 +23,7 @@ const MessageBox = ({ onSend }) => {
             // 2. Send Real Notification (EmailJS)
             const emailResult = await emailService.sendLetter({
                 message,
+                from_name: fromName,
                 choice: 'yes'
             });
 
@@ -66,11 +68,21 @@ const MessageBox = ({ onSend }) => {
                     "Inscribe your vows upon this scroll..."
                 </p>
 
-                <div className="relative mb-10 group">
+                <div className="relative mb-6 group w-full">
+                    <input
+                        type="text"
+                        value={fromName}
+                        onChange={(e) => setFromName(e.target.value)}
+                        placeholder="Your Name (Who is this from?)"
+                        className="w-full bg-royal-night/5 border-b-2 border-royal-night/20 p-2 font-cormorant text-xl text-royal-night transition-all duration-300 placeholder-royal-night/40 italic focus:outline-none focus:border-antique-gold"
+                    />
+                </div>
+
+                <div className="relative mb-10 group w-full">
                     <textarea
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Write here..."
+                        placeholder="Write your vows..."
                         className="w-full h-48 bg-royal-night/5 border-2 border-royal-night/20 p-6 font-cormorant text-xl text-royal-night transition-all duration-300 resize-none placeholder-royal-night/40 italic focus:outline-none focus:border-antique-gold focus:ring-1 focus:ring-antique-gold/50"
                     />
                     <div className="absolute bottom-6 right-6 text-royal-night opacity-40 text-2xl">✒️</div>
