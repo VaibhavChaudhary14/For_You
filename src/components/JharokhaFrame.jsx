@@ -4,7 +4,7 @@ const JharokhaFrame = ({ children, title }) => {
     return (
         <div className="relative group">
             {/* Archway Shape using SVG Clip path or just visual borders */}
-            <div className="relative z-10 p-12 bg-royal-night/80 backdrop-blur-md border-y-4 border-antique-gold mithila-border shadow-glow-gold max-w-2xl mx-auto text-center transition-transform duration-500">
+            <div className="relative z-10 p-12 bg-royal-night/80 backdrop-blur-md border-y-4 border-antique-gold mithila-border shadow-glow-gold max-w-2xl mx-auto text-center transform hover:scale-[1.02] transition-transform duration-500">
 
                 {/* Decorative Top Arch SVG */}
                 <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-64 h-24 pointer-events-none">

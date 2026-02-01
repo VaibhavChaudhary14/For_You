@@ -116,31 +116,11 @@ const BookExperience = ({ onComplete }) => {
 
     const content = CHAPTERS[currentChapter];
 
-    // Typewriter Effect Logic
-    const [displayedMessage, setDisplayedMessage] = useState('');
-
-    useEffect(() => {
-        setDisplayedMessage(''); // Reset on chapter change
-        let index = 0;
-        const speed = 30; // ms per char
-
-        const timer = setInterval(() => {
-            if (index < content.message.length) {
-                setDisplayedMessage((prev) => prev + content.message.charAt(index));
-                index++;
-            } else {
-                clearInterval(timer);
-            }
-        }, speed);
-
-        return () => clearInterval(timer);
-    }, [currentChapter, content.message]);
-
     return (
         <div className="h-screen w-full flex items-center justify-center bg-royal-night overflow-hidden relative fade-in">
 
             {/* Dark Background Texture */}
-            <div className="absolute inset-0 bg-rajput-pattern opacity-40 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-rajput-pattern opacity-40"></div>
 
             {/* Particles */}
             {!showCover && <FloatingParticles theme={content.theme} />}
@@ -175,7 +155,7 @@ const BookExperience = ({ onComplete }) => {
                 <div className={`w-full max-w-2xl mx-auto p-2 rounded-sm relative transition-all duration-500 z-10 ${isFlipping ? 'page-flip-exit' : 'page-flip-enter'}`}>
 
                     {/* Parchment Container */}
-                    <div className="bg-parchment p-8 md:p-14 shadow-[0_0_50px_rgba(197,160,89,0.3)] border-2 border-antique-gold/60 relative overflow-hidden h-[700px] flex flex-col justify-between">
+                    <div className="bg-parchment p-8 md:p-14 shadow-[0_0_50px_rgba(197,160,89,0.3)] border-2 border-antique-gold/60 relative overflow-hidden">
 
                         {/* 📜 TEXTURE OVERLAY: Adds realistic paper grain */}
                         <div
@@ -189,10 +169,10 @@ const BookExperience = ({ onComplete }) => {
                         <div className="absolute bottom-3 left-3 text-mithila-red text-2xl opacity-80 z-10">✥</div>
                         <div className="absolute bottom-3 right-3 text-mithila-red text-2xl opacity-80 z-10">✥</div>
 
-                        <div className="text-center relative z-10 flex flex-col h-full">
+                        <div className="text-center relative z-10">
 
                             {/* Medieval Sticker Image */}
-                            <div className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 flex items-center justify-center shrink-0">
+                            <div className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 flex items-center justify-center">
                                 <img
                                     src={content.image}
                                     alt={content.day}
@@ -200,19 +180,17 @@ const BookExperience = ({ onComplete }) => {
                                 />
                             </div>
 
-                            <h2 className="text-3xl md:text-4xl text-[#2a0a10] mb-6 font-playfair font-bold uppercase tracking-widest border-b-2 border-mithila-red/40 inline-block pb-3 shadow-sm shrink-0">
+                            <h2 className="text-3xl md:text-4xl text-[#2a0a10] mb-8 font-playfair font-bold uppercase tracking-widest border-b-2 border-mithila-red/40 inline-block pb-3 shadow-sm">
                                 {content.day}
                             </h2>
 
-                            {/* IMPROVED READABILITY: Typewriter Effect */}
-                            <div className="grow flex items-center justify-center">
-                                <p className="text-xl md:text-2xl font-cormorant leading-loose text-[#1a0505] max-w-lg mx-auto font-semibold italic antialiased drop-shadow-sm min-h-[150px]">
-                                    "{displayedMessage}"<span className="animate-pulse text-mithila-red">|</span>
-                                </p>
-                            </div>
+                            {/* IMPROVED READABILITY: Darker Ink, Medium Weight, increased spacing */}
+                            <p className="text-xl md:text-2xl font-cormorant leading-loose text-[#1a0505] max-w-lg mx-auto font-semibold italic antialiased drop-shadow-sm">
+                                "{content.message}"
+                            </p>
 
                             {/* Visible Navigation Buttons */}
-                            <div className="flex justify-between items-center mt-auto px-2 md:px-8 shrink-0 pb-4 relative z-[50] pointer-events-auto">
+                            <div className="flex justify-between items-center mt-12 px-2 md:px-8">
                                 <div className="w-1/3 text-left">
                                     {currentChapter > 0 && (
                                         <button
@@ -231,7 +209,7 @@ const BookExperience = ({ onComplete }) => {
                                 <div className="w-1/3 text-right">
                                     <button
                                         onClick={handleNext}
-                                        className="flex items-center gap-2 text-[#2a0a10] hover:text-mithila-red font-playfair font-bold uppercase tracking-widest transition-colors ml-auto group pointer-events-auto cursor-pointer"
+                                        className="flex items-center gap-2 text-[#2a0a10] hover:text-mithila-red font-playfair font-bold uppercase tracking-widest transition-colors ml-auto group"
                                     >
                                         {currentChapter === CHAPTERS.length - 1 ? 'Continue' : 'Next'}
                                         <span className="text-xl group-hover:translate-x-1 transition-transform inline-block">❯</span>
