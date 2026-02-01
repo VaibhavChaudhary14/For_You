@@ -212,12 +212,12 @@ const BookExperience = ({ onComplete }) => {
                             </div>
 
                             {/* Visible Navigation Buttons */}
-                            <div className="flex justify-between items-center mt-auto px-2 md:px-8 shrink-0 pb-4 relative z-[100]">
+                            <div className="flex justify-between items-center mt-auto px-2 md:px-8 shrink-0 pb-4 relative z-[50] pointer-events-auto">
                                 <div className="w-1/3 text-left">
                                     {currentChapter > 0 && (
                                         <button
                                             onClick={handlePrev}
-                                            className="flex items-center gap-2 text-[#2a0a10]/70 hover:text-mithila-red font-playfair font-bold uppercase tracking-widest transition-colors group pointer-events-auto cursor-pointer"
+                                            className="flex items-center gap-2 text-[#2a0a10]/70 hover:text-mithila-red font-playfair font-bold uppercase tracking-widest transition-colors group"
                                         >
                                             <span className="text-xl group-hover:-translate-x-1 transition-transform">❮</span> Back
                                         </button>
