@@ -232,7 +232,6 @@ const BookExperience = ({ onComplete }) => {
                                     <button
                                         onClick={handleNext}
                                         className="flex items-center gap-2 text-[#2a0a10] hover:text-mithila-red font-playfair font-bold uppercase tracking-widest transition-colors ml-auto group"
-                                        disabled={displayedMessage.length < content.message.length} // Force read
                                     >
                                         {currentChapter === CHAPTERS.length - 1 ? 'Continue' : 'Next'}
                                         <span className="text-xl group-hover:translate-x-1 transition-transform inline-block">❯</span>
