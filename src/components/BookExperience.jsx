@@ -6,6 +6,9 @@ import roseImg from '../assets/stickers/rose.png';
 import ringImg from '../assets/stickers/ring.png';
 import chocolateImg from '../assets/stickers/chocolate.png';
 import teddyImg from '../assets/stickers/teddy.png';
+import promiseImg from '../assets/stickers/promise.png';
+import hugImg from '../assets/stickers/hug.png';
+import kissImg from '../assets/stickers/kiss.png';
 import parchmentTexture from '../assets/textures/parchment.png';
 
 const CHAPTERS = [
@@ -35,19 +38,19 @@ const CHAPTERS = [
     },
     {
         day: "Promise Day",
-        image: ringImg, // Reusing Ring as symbol of vow
+        image: promiseImg,
         theme: "promise",
         message: "My word is my bond, etched in stone. I vow to stand as your fortress, shielding you from every storm, honoring you with every breath until the stars go dark."
     },
     {
         day: "Hug Day",
-        image: teddyImg, // Reusing Teddy as symbol of comfort
+        image: hugImg,
         theme: "hug",
         message: "When I hold you, time stands still. Two souls merging like rivers in the moonlight. In your embrace, I find the peace that a thousand kingdoms could not buy."
     },
     {
         day: "Kiss Day",
-        image: roseImg, // Reusing Rose as symbol of passion
+        image: kissImg,
         theme: "kiss",
         message: "A seal upon our hearts. A silent pact that binds us across lifetimes. With this kiss, I surrender my soul to yours, forever and always."
     }
@@ -169,11 +172,13 @@ const BookExperience = ({ onComplete }) => {
                         <div className="text-center relative z-10">
 
                             {/* Medieval Sticker Image */}
-                            <img
-                                src={content.image}
-                                alt={content.day}
-                                className="w-32 h-32 md:w-40 md:h-40 object-contain mx-auto mb-8 filter drop-shadow-lg opacity-90 hover:scale-105 transition-transform duration-700 hover:sepia-[.3]"
-                            />
+                            <div className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 flex items-center justify-center">
+                                <img
+                                    src={content.image}
+                                    alt={content.day}
+                                    className="max-w-full max-h-full object-contain filter drop-shadow-lg opacity-90 transition-transform duration-700 hover:sepia-[.3] mix-blend-multiply placeholder-bg-transparent"
+                                />
+                            </div>
 
                             <h2 className="text-3xl md:text-4xl text-[#2a0a10] mb-8 font-playfair font-bold uppercase tracking-widest border-b-2 border-mithila-red/40 inline-block pb-3 shadow-sm">
                                 {content.day}
